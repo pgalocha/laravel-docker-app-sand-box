@@ -1,4 +1,4 @@
-# Laravel Docker Application
+# NEYL FINDER APPLICATION
 
 This project is a simple Laravel application deployed using Docker with a MySQL database. This README provides the steps to set up, run, and test the application locally.
 
