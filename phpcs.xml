@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ruleset name="MyProject">
+    <description>Coding standard for MyProject</description>
+
+    <!-- Include the PSR-12 standard -->
+    <rule ref="PSR12"/>
+
+    <!-- Specify the directories to be analyzed -->
+    <file>app/</file>
+    <file>routes/</file>
+    <file>database/</file>
+
+    <!-- Exclude vendor directory -->
+    <exclude-pattern>vendor/*</exclude-pattern>
+</ruleset>
