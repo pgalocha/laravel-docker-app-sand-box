@@ -3,3 +3,9 @@
 .env
 .DS_Store
 .idea
+.phpunit.result.cache
+.editorconfig
+/.env
+/public/storage
+/storage/*.key
+.idea/workspace.xml
