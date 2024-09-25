@@ -37,3 +37,76 @@ Before you begin, ensure you have the following installed on your machine:
    ```bash
    docker-compose up -d
 
+4. **Install Dependencies**:
+   Enter the application container and install the Laravel dependencies:
+   ```bash
+   docker exec -it app bash
+   composer install
+
+5. **Set Up the Environment**:
+   Copy the example environment file to create your own:
+   ```bash
+   cp .env.example .env
+   ```
+
+   Open the .env file and set the database connection parameters:
+   ```bash
+   cp .env.example .env
+
+6. **Generate Application Key**:
+   Still inside the application container, run:
+   ```bash
+   php artisan key:generate
+
+7. **Run Migrations**:
+   Run the database migrations to set up your database tables:
+   ```bash
+   php artisan migrate
+
+## Running the Application
+
+1. The application should now be accessible at http://localhost:8000 in your web browser.
+
+## Testing the Database Connection
+
+1. **Enter the application container**:
+   ```bash
+   docker exec -it app bash
+
+2. **Run the database migrations (if not done previously)**:
+   ```bash
+   php artisan migrate
+
+3. **If you want to test the connection with a simple query, you can use Tinker**:
+   ```bash
+   php artisan migrate
+   ```
+
+   In Tinker, you can run:
+   ```bash
+   DB::connection()->getPdo();
+   ```
+
+## Making Changes
+
+You can edit your Laravel application files directly in the app directory of your local machine. Changes will reflect in the Docker container since the directory is mounted.
+
+## Git Integration
+
+1. **Stage Your Changes**:
+   ```bash
+   git add .
+
+2. **Commit Your Changes**:
+   ```bash
+   git commit -m "Your commit message"
+
+3. **Push Changes to GitHub**:
+   ```bash
+   git push origin master
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+
