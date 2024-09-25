@@ -1,14 +1,18 @@
-name: CI Workflow for Develop
+name: Code validation
 
 on:
-  pull_request:
-    branches:
+  push:
+    branches-ignore:
+      - master
       - develop
 
 jobs:
-  laravel-tests:
-
+  code-validation:
+    name: Validate code
     runs-on: ubuntu-latest
+    env:
+      php: '8.2'
+      extensions: mbstring, xml, sqlite3, bcmath, curl, gd, fileinfo
 
     steps:
       - name: Checkout code
@@ -26,19 +30,14 @@ jobs:
       - name: Install Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-      - name: Generate application key
-        run: php artisan key:generate
+      - name: Run PHP_CodeSniffer
+        run: vendor/bin/phpcs --standard=PSR12 app/
 
-      - name: Set Directory Permissions
-        run: chmod -R 777 storage bootstrap/cache
-
-      - name: Create Database
+      - name: Run PHP_CodeSniffer
         run: |
-          mkdir -p database
-          touch database/database.sqlite
+          vendor/bin/phpcs --report=checkstyle
 
-      - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
-        env:
-          DB_CONNECTION: sqlite
-          DB_DATABASE: database/database.sqlite
-        run: php artisan test
+      - name: Run PHPStan
+        if: always()
+        run: |
+          vendor/bin/phpstan analyse --error-format=github app/
