@@ -1,12 +1,9 @@
-name: Laravel
+name: CI Workflow for Develop
 
 on:
-  push:
-    branches:
-      - master
   pull_request:
     branches:
-      - master
+      - develop
 
 jobs:
   laravel-tests:
