@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
@@ -19,8 +20,17 @@ class UserController extends Controller
      */
     public function index()
     {
+        $user = new User();
+        $user->name = 'John Doe';  // Ensure you're providing the required fields
+        $user->email = 'john@example.com';
+        $user->password = bcrypt('secret');  // Hash the password for security
+
         $allUsers = $this->userRepos->getAllUsers();
-        // In your controller
+
+        /** @var User $user */
+        foreach ($allUsers as $user) {
+            dd($user->delete());
+        }
 
         return view('users.index', compact('allUsers'));
     }

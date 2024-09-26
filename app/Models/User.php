@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -11,20 +12,21 @@ class User extends Authenticatable
 {
     use HasFactory;
     use Notifiable;
+    use SoftDeletes;
 
     protected int $id;
 
-    protected string $name;
+    public ?string $name = null;
 
-    protected string $email;
+    public string $email;
 
-    protected string $password;
+    public string $password;
 
-    protected string $role;
+    public string $role;
 
-    protected string $email_verified_at;
+    public string $email_verified_at;
 
-    protected string $remember_token;
+    public string $remember_token;
 
     /**
      * The attributes that are mass assignable.
