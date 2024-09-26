@@ -1,19 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Example Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-<body>
-<div class="container text-center">
-    <h1>Welcome to the Example Page</h1>
-    <p>This is a sample page returned by the <strong>ExampleController</strong>.</p>
+<!-- resources/views/form.blade.php -->
 
-    <!-- Button linking to the homepage -->
-    <a href="/" class="btn btn-light">Go to Home</a>
-</div>
-</body>
-</html>
+@extends('layouts.app')
+
+@section('title')
+
+@section('header')
+@endsection
+
+@section('content')
+
+@endsection
+
+@section('footer')
+@endsection
+
+@section('styles')
+<style>
+    body {
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        color: white;
+    }
+
+    .form-container {
+        background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    .submit-btn {
+        background-color: #ff7f50; /* Coral */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .submit-btn:hover {
+        background-color: #ff6347; /* Tomato */
+    }
+
+    .error {
+        color: #ff4500; /* OrangeRed */
+        font-size: 14px;
+    }
+</style>
+@endsection
