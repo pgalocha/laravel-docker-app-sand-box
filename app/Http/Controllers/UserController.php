@@ -2,16 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    private UserRepository|null $userRepos = null;
+
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepos = $userRepository;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $allUsers = $this->userRepos->getAllUsers();
+        // In your controller
+
+        return view('users.index', compact('allUsers'));
     }
 
     /**

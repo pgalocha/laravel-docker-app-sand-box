@@ -9,8 +9,13 @@
 </head>
 <body>
 <div class="container text-center">
-    <h1>Welcome to the Example Page</h1>
-    <p>This is a sample page returned by the <strong>ExampleController</strong>.</p>
+    <ul>
+        @forelse($allUsers as $item)
+        <li>{{ $item->name }}</li>
+        @empty
+        <p>No items found.</p>
+        @endforelse
+    </ul>
 
     <!-- Button linking to the homepage -->
     <a href="/" class="btn btn-light">Go to Home</a>
